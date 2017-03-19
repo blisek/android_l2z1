@@ -17,12 +17,17 @@
         android:layout_height="wrap_content"
         android:text="Hello World!" />
 
-    <GridLayout
-        android:id="@+id/gridLayout"
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
-    </GridLayout>
+        <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+        </GridLayout>
+    </HorizontalScrollView>
 
 </LinearLayout>
