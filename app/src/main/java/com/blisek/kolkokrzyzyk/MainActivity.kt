@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
         board[tag] = currentTurn
 
 
-        viewBtn.text = currentTurn.toString()
+        viewBtn.text = currentTurn.sign
         if(checkWinConditions())
             return
         currentTurn = currentTurn.flip()
@@ -221,12 +221,12 @@ class MainActivity : AppCompatActivity() {
         var index = randomMoveGenerator.nextInt(board.size)
         if(board[index] == Turn.UNKNOWN) {
             board[index] = pcTurn
-            boardButtons[index]?.text = pcTurn.toString()
+            boardButtons[index]?.text = pcTurn.sign
         }
         else {
             index = board.indexOfFirst { it == Turn.UNKNOWN }
             board[index] = pcTurn
-            boardButtons[index]?.text = pcTurn.toString()
+            boardButtons[index]?.text = pcTurn.sign
         }
 
         currentTurn = currentTurn.flip()
@@ -247,7 +247,7 @@ class MainActivity : AppCompatActivity() {
         textView?.text = String.format("Kolej na: %s.", currentTurn.verbal)
     }
 
-    private enum class Turn(private val text: String, val verbal: String) {
+    private enum class Turn(val sign: String, val verbal: String) {
         CROSS("X", "krzyżyk"), CIRCLE("O", "kółko"), UNKNOWN(" ", "UNKNOWN");
 
         fun flip() : Turn {
@@ -255,10 +255,6 @@ class MainActivity : AppCompatActivity() {
                 return CIRCLE
             else
                 return CROSS
-        }
-
-        override fun toString(): String {
-            return text
         }
     }
 }
